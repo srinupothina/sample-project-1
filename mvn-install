@@ -1,0 +1,23 @@
+pipeline {
+    agent {
+        node {
+            label = "to59-runner"
+        }
+        stages {
+            stage("checkout") {
+                steps {
+                    checkout scmGit(branches: [[name: '*/develop']], extensions: [], userRemoteConfigs: [[credentialsId: 'ca-git-access', url: 'https://git.cloudavise.com/visops/t059/sample-project-1.git']])
+                }
+                
+            }
+            stage("Build") {
+                steps {
+                    sh 'mvn clean install'
+                }
+            }
+
+             
+
+        }
+    }
+}
