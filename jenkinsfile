@@ -1,8 +1,9 @@
 pipeline {
     agent {
         node {
-            label = "to59-runner"
+            label "t059-runner"
         }
+    }
         stages {
             stage("checkout") {
                 steps {
@@ -19,5 +20,4 @@ pipeline {
              
 
         }
-    }
 }
